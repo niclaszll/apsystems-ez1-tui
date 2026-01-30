@@ -20,7 +20,6 @@ A terminal user interface (TUI) application for monitoring and controlling APsys
 
 ## Requirements
 
-- Go 1.21 or higher
 - APsystems EZ1-M microinverter with local API enabled
 - Network access to the microinverter
 
