@@ -82,3 +82,20 @@ changelog:
       order: 1
     - title: Others
       order: 999
+
+brews:
+  - name: ez1-tui
+    repository:
+      owner: niclaszll
+      name: homebrew-tap
+    commit_author:
+      name: goreleaserbot
+      email: bot@goreleaser.com
+    homepage: https://github.com/niclaszll/apsystems-ez1-tui
+    description: "Terminal UI for monitoring and controlling APsystems EZ1 microinverters"
+    license: MIT
+    skip_upload: auto
+    test: |
+      system "#{bin}/ez1-tui", "--version"
+    install: |
+      bin.install "ez1-tui"

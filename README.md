@@ -26,6 +26,12 @@ A terminal user interface (TUI) application for monitoring and controlling APsys
 
 ## Installation
 
+### Homebrew (macOS/Linux)
+
+```bash
+brew install niclaszll/tap/ez1-tui
+```
+
 ### Pre-built Binaries
 
 Download the latest release for your platform from the [releases page](https://github.com/niclaszll/apsystems-ez1-tui/releases).
