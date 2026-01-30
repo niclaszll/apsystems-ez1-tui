@@ -32,7 +32,8 @@ builds:
       - -X main.date={{.Date}}
 
 archives:
-  - format: tar.gz
+  - id: unix-archives
+    formats: [tar.gz]
     name_template: >-
       {{ .ProjectName }}_
       {{- .Version }}_
@@ -44,10 +45,12 @@ archives:
     files:
       - README.md
       - LICENSE*
-  - format: zip
+  - id: windows-archives
+    formats: [zip]
     name_template: >-
       {{ .ProjectName }}_
-      {{- .Version }}_Windows_
+      {{- .Version }}_
+      {{- title .Os }}_
       {{- if eq .Arch "amd64" }}x86_64
       {{- else if eq .Arch "386" }}i386
       {{- else }}{{ .Arch }}{{ end }}
@@ -83,8 +86,10 @@ changelog:
     - title: Others
       order: 999
 
-brews:
+homebrew_casks:
   - name: ez1-tui
+    ids:
+      - unix-archives
     repository:
       owner: niclaszll
       name: homebrew-tap
@@ -93,9 +98,12 @@ brews:
       email: bot@goreleaser.com
     homepage: https://github.com/niclaszll/apsystems-ez1-tui
     description: "Terminal UI for monitoring and controlling APsystems EZ1 microinverters"
-    license: MIT
     skip_upload: auto
-    test: |
-      system "#{bin}/ez1-tui", "--version"
-    install: |
-      bin.install "ez1-tui"
+    binaries:
+      - ez1-tui
+    hooks:
+      post:
+        install: |
+          if OS.mac?
+            system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/ez1-tui"]
+          end
