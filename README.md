@@ -12,11 +12,10 @@ A terminal user interface (TUI) application for monitoring and controlling APsys
 
 ![CLI Demo](./docs/img/demo.gif)
 
-- **Real-time Dashboard**: Monitor current power output, daily energy generation, and lifetime statistics
-- **Device Information**: View detailed device specs including firmware, IP address, and serial number
-- **Alarm Monitoring**: Check system health with alarm status for overvoltage, temperature, grid faults, and more
-- **Power Control**: Remotely control device power status (ON/OFF/SLEEP) and adjust maximum power limits (30-800W)
-- **Keyboard Navigation**: Intuitive keyboard controls for all operations
+- **Real-time Dashboard**: Current power output, daily energy generation, and lifetime statistics
+- **Device Information**: Device ID, firmware version, IP address, WiFi SSID, and power specifications
+- **Alarm Monitoring**: Grid faults, PV short circuits, and output errors
+- **Power Control**: Remote power management (ON/OFF/SLEEP) and adjustable power limits
 
 ## Requirements
 
