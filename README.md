@@ -4,6 +4,8 @@ A terminal user interface (TUI) application for monitoring and controlling APsys
 
 ## Features
 
+![CLI Demo](./docs/img/demo.gif)
+
 - **Real-time Dashboard**: Monitor current power output, daily energy generation, and lifetime statistics
 - **Device Information**: View detailed device specs including firmware, IP address, and serial number
 - **Alarm Monitoring**: Check system health with alarm status for overvoltage, temperature, grid faults, and more
