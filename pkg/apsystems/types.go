@@ -37,14 +37,11 @@ func (si *StringInt) UnmarshalJSON(data []byte) error {
 type DeviceInfo struct {
 	Data struct {
 		DeviceID string    `json:"deviceId"`
-		DeviceSN string    `json:"devSn"`
 		SSIDName string    `json:"ssid"`
 		IPAddr   string    `json:"ipAddr"`
 		MinPower StringInt `json:"minPower"`
 		MaxPower StringInt `json:"maxPower"`
 		Firmware string    `json:"devVer"`
-		Model    string    `json:"model"`
-		CurPower StringInt `json:"curPower"`
 	} `json:"data"`
 }
 
@@ -81,7 +78,12 @@ type PowerLimit struct {
 }
 
 type Statistics struct {
-	// TODO: add individual inputs
+	Power1              int
+	EnergyToday1        float64
+	EnergyLifetime1     float64
+	Power2              int
+	EnergyToday2        float64
+	EnergyLifetime2     float64
 	TotalPower          int
 	TotalEnergyToday    float64
 	TotalEnergyLifetime float64

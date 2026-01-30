@@ -95,6 +95,12 @@ func (c *Client) GetStatistics(ctx context.Context) (*Statistics, error) {
 	}
 
 	return &Statistics{
+		Power1:              output.Data.P1,
+		EnergyToday1:        output.Data.E1,
+		EnergyLifetime1:     output.Data.Te1,
+		Power2:              output.Data.P2,
+		EnergyToday2:        output.Data.E2,
+		EnergyLifetime2:     output.Data.Te2,
 		TotalPower:          output.Data.P1 + output.Data.P2,
 		TotalEnergyToday:    output.Data.E1 + output.Data.E2,
 		TotalEnergyLifetime: output.Data.Te1 + output.Data.Te2,

@@ -343,6 +343,11 @@ func (m Model) View() string {
 	header := m.renderHeader()
 	footer := m.renderFooter()
 
+	// Apply some padding to align with header
+	contentStyle := lipgloss.NewStyle().Padding(0, 1)
+	content = contentStyle.Render(content)
+	footer = contentStyle.Render(footer)
+
 	return lipgloss.JoinVertical(lipgloss.Left, header, content, footer)
 }
 
@@ -367,14 +372,9 @@ func (m Model) renderHeader() string {
 
 func (m Model) renderFooter() string {
 	if m.showHelp {
-		return "\n" + m.help.View(m.keys)
+		return "\n" + m.help.FullHelpView(m.keys.FullHelp())
 	}
-	return "\n" + m.help.ShortHelpView([]key.Binding{
-		m.keys.Tab,
-		m.keys.Refresh,
-		m.keys.Help,
-		m.keys.Quit,
-	})
+	return "\n" + m.help.ShortHelpView(m.keys.ShortHelp())
 }
 
 func (m Model) renderDashboard() string {
@@ -393,7 +393,7 @@ func (m Model) renderDashboard() string {
 	}
 
 	labelStyle := lipgloss.NewStyle().
-		Foreground(lipgloss.Color("#888888")).
+		Foreground(lipgloss.Color("#FAFAFA")).
 		Width(25)
 
 	valueStyle := lipgloss.NewStyle().
@@ -449,7 +449,7 @@ func (m Model) renderDeviceInfo() string {
 	}
 
 	labelStyle := lipgloss.NewStyle().
-		Foreground(lipgloss.Color("#888888")).
+		Foreground(lipgloss.Color("#FAFAFA")).
 		Width(20)
 
 	valueStyle := lipgloss.NewStyle().
@@ -459,8 +459,6 @@ func (m Model) renderDeviceInfo() string {
 	lines := []string{
 		"",
 		labelStyle.Render("Device ID:") + valueStyle.Render(m.deviceInfo.Data.DeviceID),
-		labelStyle.Render("Serial Number:") + valueStyle.Render(m.deviceInfo.Data.DeviceSN),
-		labelStyle.Render("Model:") + valueStyle.Render(m.deviceInfo.Data.Model),
 		labelStyle.Render("Firmware:") + valueStyle.Render(m.deviceInfo.Data.Firmware),
 		"",
 		labelStyle.Render("IP Address:") + valueStyle.Render(m.deviceInfo.Data.IPAddr),
@@ -468,7 +466,6 @@ func (m Model) renderDeviceInfo() string {
 		"",
 		labelStyle.Render("Min Power:") + valueStyle.Render(fmt.Sprintf("%d W", int(m.deviceInfo.Data.MinPower))),
 		labelStyle.Render("Max Power:") + valueStyle.Render(fmt.Sprintf("%d W", int(m.deviceInfo.Data.MaxPower))),
-		labelStyle.Render("Current Setting:") + valueStyle.Render(fmt.Sprintf("%d W", int(m.deviceInfo.Data.CurPower))),
 	}
 
 	return lipgloss.JoinVertical(lipgloss.Left, lines...)
@@ -480,7 +477,7 @@ func (m Model) renderAlarms() string {
 	}
 
 	labelStyle := lipgloss.NewStyle().
-		Foreground(lipgloss.Color("#888888")).
+		Foreground(lipgloss.Color("#FAFAFA")).
 		Width(25)
 
 	okStyle := lipgloss.NewStyle().
@@ -510,7 +507,7 @@ func (m Model) renderAlarms() string {
 
 func (m Model) renderPowerControl() string {
 	labelStyle := lipgloss.NewStyle().
-		Foreground(lipgloss.Color("#888888")).
+		Foreground(lipgloss.Color("#FAFAFA")).
 		Width(20)
 
 	valueStyle := lipgloss.NewStyle().
