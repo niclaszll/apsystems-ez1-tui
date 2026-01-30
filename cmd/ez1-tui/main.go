@@ -10,10 +10,25 @@ import (
 	"github.com/niclaszll/apsystems-ez1-tui/pkg/apsystems"
 )
 
+// Set via ldflags during build
+var (
+	version = "dev"
+	commit  = "none"
+	date    = "unknown"
+)
+
 func main() {
 	host := flag.String("host", "", "Microinverter IP address or hostname (required)")
 	port := flag.Int("port", 8050, "Microinverter API port")
+	showVersion := flag.Bool("version", false, "Show version information")
 	flag.Parse()
+
+	if *showVersion {
+		fmt.Printf("ez1-tui %s\n", version)
+		fmt.Printf("  commit: %s\n", commit)
+		fmt.Printf("  built:  %s\n", date)
+		os.Exit(0)
+	}
 
 	if *host == "" {
 		fmt.Println("Error: -host flag is required")

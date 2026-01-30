@@ -1,6 +1,10 @@
 # APsystems EZ1 TUI
 
 ![License](https://img.shields.io/github/license/niclaszll/apsystems-ez1-tui)
+[![Go Reference](https://pkg.go.dev/badge/github.com/niclaszll/apsystems-ez1-tui.svg)](https://pkg.go.dev/github.com/niclaszll/apsystems-ez1-tui)
+[![Go Report Card](https://goreportcard.com/badge/github.com/niclaszll/apsystems-ez1-tui)](https://goreportcard.com/report/github.com/niclaszll/apsystems-ez1-tui)
+[![GitHub release](https://img.shields.io/github/release/niclaszll/apsystems-ez1-tui.svg)](https://github.com/niclaszll/apsystems-ez1-tui/releases)
+[![Release Workflow](https://github.com/niclaszll/apsystems-ez1-tui/actions/workflows/release.yml/badge.svg)](https://github.com/niclaszll/apsystems-ez1-tui/actions)
 
 A terminal user interface (TUI) application for monitoring and controlling APsystems EZ1 microinverters, built with Go and [Bubbletea](https://github.com/charmbracelet/bubbletea).
 
@@ -22,18 +26,22 @@ A terminal user interface (TUI) application for monitoring and controlling APsys
 
 ## Installation
 
+### Pre-built Binaries
+
+Download the latest release for your platform from the [releases page](https://github.com/niclaszll/apsystems-ez1-tui/releases).
+
+### Go Install
+
+```bash
+go install github.com/niclaszll/apsystems-ez1-tui/cmd/ez1-tui@latest
+```
+
 ### From Source
 
 ```bash
 git clone https://github.com/niclaszll/apsystems-ez1-tui.git
 cd apsystems-ez1-tui
-go build -o ez1-tui ./cmd/ez1-tui
-```
-
-### Using Go Install
-
-```bash
-go install github.com/niclaszll/apsystems-ez1-tui/cmd/ez1-tui@latest
+make build
 ```
 
 ## Setup Your Microinverter
@@ -48,8 +56,6 @@ Before using this application, you must enable the local API on your APsystems E
 For detailed setup instructions with screenshots, see the [APsystems EZ1-API repository](https://github.com/SonnenladenGmbH/APsystems-EZ1-API).
 
 ## Usage
-
-Ensure `$GOPATH/bin` is in your `PATH`.
 
 ### Basic Usage
 
@@ -67,6 +73,7 @@ ez1-tui -host 192.168.1.100 -port 8050
 
 - `-host` (required): IP address or hostname of your microinverter
 - `-port` (optional): API port number (default: 8050)
+- `-version`: Show version information
 
 ## Keyboard Controls
 
