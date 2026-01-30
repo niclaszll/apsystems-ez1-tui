@@ -1,5 +1,7 @@
 # APsystems EZ1 TUI
 
+![License](https://img.shields.io/github/license/niclaszll/apsystems-ez1-tui)
+
 A terminal user interface (TUI) application for monitoring and controlling APsystems EZ1 microinverters, built with Go and [Bubbletea](https://github.com/charmbracelet/bubbletea).
 
 ## Features
