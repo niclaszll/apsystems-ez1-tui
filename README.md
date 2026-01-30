@@ -29,6 +29,7 @@ A terminal user interface (TUI) application for monitoring and controlling APsys
 ### Homebrew (macOS/Linux)
 
 ```bash
+brew tap-new niclaszll/homebrew-tap
 brew install niclaszll/tap/ez1-tui
 ```
 
