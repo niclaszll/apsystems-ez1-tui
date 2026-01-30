@@ -49,6 +49,8 @@ For detailed setup instructions with screenshots, see the [APsystems EZ1-API rep
 
 ## Usage
 
+Ensure `$GOPATH/bin` is in your `PATH`.
+
 ### Basic Usage
 
 ```bash
