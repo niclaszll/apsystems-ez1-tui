@@ -73,10 +73,8 @@ func (c *Client) SetDevicePowerStatus(ctx context.Context, status string) error 
 		statusCode = 0
 	case "OFF":
 		statusCode = 1
-	case "SLEEP":
-		statusCode = 2
 	default:
-		return fmt.Errorf("invalid status: %s (must be ON, OFF, or SLEEP)", status)
+		return fmt.Errorf("invalid status: %s (must be ON, OFF)", status)
 	}
 
 	var resp PowerStatus

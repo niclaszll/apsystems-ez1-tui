@@ -15,7 +15,7 @@ A terminal user interface (TUI) application for monitoring and controlling APsys
 - **Real-time Dashboard**: Current power output, daily energy generation, and lifetime statistics
 - **Device Information**: Device ID, firmware version, IP address, WiFi SSID, and power specifications
 - **Alarm Monitoring**: Grid faults, PV short circuits, and output errors
-- **Power Control**: Remote power management (ON/OFF/SLEEP) and adjustable power limits
+- **Power Control**: Remote power management (ON/OFF) and adjustable power limits
 
 ## Requirements
 
@@ -93,7 +93,6 @@ ez1-tui -host 192.168.1.100 -port 8050
 
 - `o`: Turn device ON
 - `f`: Turn device OFF
-- `s`: Set device to SLEEP mode
 - `+` or `=`: Increase max power limit by 50W
 - `-` or `_`: Decrease max power limit by 50W
 
@@ -150,7 +149,7 @@ func main() {
 - `GetStatistics(ctx)`: Aggregated statistics from both PV inputs
 - `GetMaxPower(ctx)`: Current maximum power limit setting
 - `SetMaxPower(ctx, watts)`: Set maximum power limit (30-800W)
-- `GetDevicePowerStatus(ctx)`: Current power status (ON/OFF/SLEEP)
+- `GetDevicePowerStatus(ctx)`: Current power status (ON/OFF)
 - `SetDevicePowerStatus(ctx, status)`: Change power status
 
 ## Troubleshooting

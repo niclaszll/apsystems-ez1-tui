@@ -67,7 +67,7 @@ type OutputData struct {
 
 type PowerStatus struct {
 	Data struct {
-		Status StringInt `json:"status"` // 0 = normal, 1 = off, 2 = sleep
+		Status StringInt `json:"status"` // 0 = normal, 1 = off
 	} `json:"data"`
 }
 

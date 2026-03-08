@@ -29,7 +29,6 @@ type keyMap struct {
 	Tab         key.Binding
 	PowerOn     key.Binding
 	PowerOff    key.Binding
-	PowerSleep  key.Binding
 	IncreasePwr key.Binding
 	DecreasePwr key.Binding
 }
@@ -41,7 +40,7 @@ func (k keyMap) ShortHelp() []key.Binding {
 func (k keyMap) FullHelp() [][]key.Binding {
 	return [][]key.Binding{
 		{k.Tab, k.Refresh, k.Help, k.Quit},
-		{k.PowerOn, k.PowerOff, k.PowerSleep},
+		{k.PowerOn, k.PowerOff},
 		{k.IncreasePwr, k.DecreasePwr},
 	}
 }
@@ -70,10 +69,6 @@ var keys = keyMap{
 	PowerOff: key.NewBinding(
 		key.WithKeys("f"),
 		key.WithHelp("f", "power off"),
-	),
-	PowerSleep: key.NewBinding(
-		key.WithKeys("s"),
-		key.WithHelp("s", "sleep mode"),
 	),
 	IncreasePwr: key.NewBinding(
 		key.WithKeys("+", "="),
@@ -232,10 +227,6 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		case key.Matches(msg, m.keys.PowerOff):
 			if m.currentView == ViewPowerControl {
 				return m, m.setPowerStatus("OFF")
-			}
-		case key.Matches(msg, m.keys.PowerSleep):
-			if m.currentView == ViewPowerControl {
-				return m, m.setPowerStatus("SLEEP")
 			}
 		case key.Matches(msg, m.keys.IncreasePwr):
 			if m.currentView == ViewPowerControl && m.powerLimit != nil {
@@ -420,8 +411,6 @@ func (m Model) renderDashboard() string {
 			statusText = "ON"
 		case 1:
 			statusText = "OFF"
-		case 2:
-			statusText = "SLEEP"
 		default:
 			statusText = "UNKNOWN"
 		}
@@ -527,14 +516,12 @@ func (m Model) renderPowerControl() string {
 			statusText = "ON (Normal)"
 		case 1:
 			statusText = "OFF"
-		case 2:
-			statusText = "SLEEP"
 		default:
 			statusText = "UNKNOWN"
 		}
 		lines = append(lines, labelStyle.Render("Current Status:")+valueStyle.Render(statusText))
 		lines = append(lines, "")
-		lines = append(lines, helpStyle.Render("Press 'o' for ON, 'f' for OFF, 's' for SLEEP"))
+		lines = append(lines, helpStyle.Render("Press 'o' for ON, 'f' for OFF"))
 		lines = append(lines, "")
 	}
 
